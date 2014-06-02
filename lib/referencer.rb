@@ -42,27 +42,7 @@ class Referencer
   end
 
   def get_references(word_definition)
-    characters = word_definition.chars
-    counter = 0
-    starting_char = 0
-    ending_char = 0
-    references = []
-    characters.each do |char|
-      if char == "{"
-        starting_char = counter
-      elsif char == "}"
-        ending_char = counter
-      end
-      if starting_char != 0 && ending_char != 0
-        references << word_definition.slice(starting_char, ending_char)
-      end
-      counter += 1
-    end
-    formatted_references = []
-    references.uniq.each do |reference|
-      formatted_references << reference.scan(/{(.+)}/).flatten
-    end
-    formatted_references.flatten
+    word_definition.scan(/{(.*?)}/).flatten
   end
 
   def parse_json(text)
