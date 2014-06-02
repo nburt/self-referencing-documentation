@@ -22,17 +22,12 @@ class Referencer
           if reference[0..-2] == entry[0]
             referenced_urls << entry[1]["url"]
           end
-        end
-        if reference == entry[0]
+        elsif reference == entry[0]
           referenced_urls << entry[1]["url"]
         end
       end
     end
     create_references_hash(word_definition, referenced_urls)
-
-    # create a new hash
-    # definition of word
-    # see_also, an array of urls of referenced words
   end
 
   private
